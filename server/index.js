@@ -38,10 +38,10 @@ app.post(`${authBaseUrl}logout`, auth_controller.logout);
 
 const propBaseUrl = '/api/properties'
 // property endpoints
-// app.post(`${propBaseUrl}`, createNew);
-// app.get(`${propBaseUrl}`, getProperties);
-// app.delete(`${propBaseUrl}/:id`, deleteProperty);
-// app.get(`${propBaseUrl}/filter`, filterProperties);
+app.post(`${propBaseUrl}`, prop_controller.createNew);
+app.get(`${propBaseUrl}`, prop_controller.getProperties);
+app.delete(`${propBaseUrl}/:id`, prop_controller.deleteProperty);
+// app.get(`${propBaseUrl}/filter`, prop_controller.filterProperties);
 
 const port = 3005;
 app.listen( port, () => { console.log(`Server listening on port ${port}.`); } );
