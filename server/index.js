@@ -41,7 +41,7 @@ const propBaseUrl = '/api/properties'
 app.post(`${propBaseUrl}`, prop_controller.createNew);
 app.get(`${propBaseUrl}`, prop_controller.getProperties);
 app.delete(`${propBaseUrl}/:id`, prop_controller.deleteProperty);
-// app.get(`${propBaseUrl}/filter`, prop_controller.filterProperties);
+app.get(`${propBaseUrl}/filter`, prop_controller.filterProperties);
 
-const port = 3005;
+const port = 3032;
 app.listen( port, () => { console.log(`Server listening on port ${port}.`); } );

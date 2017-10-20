@@ -51,11 +51,12 @@ module.exports = {
   filterProperties: (req, res, next) => {
     const {session} = req;
     const {id: sessUsrId} = session.user;
+    const {desiredRent} = req.query;
     const dbInstance = req.app.get('db');
 
-    dbInstance.prop_get({sessUsrId})
-      .then((userProps) => {
-        session.user.properties = userProps;
+    dbInstance.prop_filter({sessUsrId, desiredRent})
+      .then((filteredProps) => {
+        session.user.properties = filteredProps;
         res.status(200).send(session.user);
       })
       .catch((err) => {
