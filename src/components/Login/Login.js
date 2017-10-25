@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import {connect} from 'react-redux';
+import {addUserId} from '../../ducks/properties';
 import './Login.css';
 
 class Login extends Component {
@@ -28,6 +29,7 @@ class Login extends Component {
     })
     .then(res => {
       if (res.data !== 'Unauthorized') {
+        this.props.addUserId(res.data.id);
         this.props.history.push('/dashboard')
       } else {
         alert(`The Username you are trying to use does not have an account, or you miss typed you password. Please register this username, or try a different password.`);
@@ -77,4 +79,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapStateToProps (state) {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps, {addUserId})(Login);

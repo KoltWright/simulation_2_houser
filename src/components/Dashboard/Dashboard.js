@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from '../Navbar/Navbar.js';
-
+import {connect} from 'react-redux';
 import './Dashboard.css';
 
 class Dashboard extends Component {
@@ -8,6 +8,7 @@ class Dashboard extends Component {
     return (
       <div id="dashboard-container">
       <Navbar />
+
       </div>
     )
   }

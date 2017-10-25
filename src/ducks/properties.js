@@ -14,7 +14,8 @@ const initialState = {
   recommendendrent: ''
 }
 
-const USERINFO = 'USERINFO';
+const USERID = 'USERID';
+const USERPROPS = 'USERPROPS';
 const WIZARDONE = 'WIZARDONE';
 const WIZARDTWO = 'WIZARDTWO';
 const WIZARDTHREE = 'WIZARDTHREE';
@@ -24,10 +25,13 @@ const CLEARPROPS = 'CLEARPROPS';
 
 export default function propteries(state = initialState, action) {
   switch (action.type) {
-    case USERINFO:
+    case USERID:
       return {
-        userId: action.payload.userId,
-        userCurrentProps: action.payload.userCurrentProps
+        userId: action.payload,
+      }
+    case USERPROPS:
+      return {
+        userCurrentProps: action.payload
       }
     case WIZARDONE:
       return {
@@ -57,15 +61,19 @@ export default function propteries(state = initialState, action) {
       }
     case CLEARPROPS:
       return {
-        state = initialState;
+        state: initialState
       }
     default:
       return state;
   }
 }
 
-export function addUserInfo (userId, userCurrentProps) {
-  return {payload: {userId: userId, userCurrentProps: userCurrentProps}, type: USERINFO};
+export function addUserId (userId) {
+  return {payload: userId, type: USERID};
+}
+
+export function addUserProps (userCurrentProps) {
+  return {payload: userCurrentProps, type: USERPROPS};
 }
 
 export function addWizardOneInfo (propName, propDesc) {
